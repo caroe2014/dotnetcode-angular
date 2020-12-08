@@ -38,13 +38,13 @@ jobs:
     displayName: Build
     inputs:
       projects: $(BuildParameters.RestoreBuildProjects)
-      arguments: --configuration $(BuildConfiguration)
-  - task: DotNetCoreCLI@2
-    displayName: Test
-    inputs:
-      command: test
-      projects: $(BuildParameters.TestProjects)
-      arguments: --configuration $(BuildConfiguration)
+#      arguments: --configuration $(BuildConfiguration)
+#  - task: DotNetCoreCLI@2
+#    displayName: Test
+#    inputs:
+#      command: test
+#      projects: $(BuildParameters.TestProjects)
+#      arguments: --configuration $(BuildConfiguration)
   - task: DotNetCoreCLI@2
     displayName: Publish
     inputs:
