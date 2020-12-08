@@ -264,3 +264,5 @@ __pycache__/
 *.licenseheader
 Thumbs.db
 tempkey.rsa
+ClientApp/node_modules/
+/ClientApp/node_modules/
