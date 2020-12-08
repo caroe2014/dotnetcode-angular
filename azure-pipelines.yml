@@ -38,13 +38,15 @@ jobs:
     displayName: Build
     inputs:
       projects: $(BuildParameters.RestoreBuildProjects)
-#      arguments: --configuration $(BuildConfiguration)
-#  - task: DotNetCoreCLI@2
-#    displayName: Test
-#    inputs:
-#      command: test
-#      projects: $(BuildParameters.TestProjects)
-#      arguments: --configuration $(BuildConfiguration)
+
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: '$(Build.BinariesDirectory)'
+      includeRootFolder: true
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+      replaceExistingArchive: true
+
   - task: DotNetCoreCLI@2
     displayName: Publish
     inputs:
