@@ -51,5 +51,6 @@ jobs:
       command: publish
       publishWebProjects: True
       projects: $(BuildParameters.RestoreBuildProjects)
-      arguments: --configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)
+#      arguments: --configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)
+      arguments: --output $(build.artifactstagingdirectory)
       zipAfterPublish: True
