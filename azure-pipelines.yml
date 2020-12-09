@@ -48,7 +48,7 @@ jobs:
 
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: '$(System.DefaultWorkingDirectory)QuickApp/'
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/QuickApp/'
       includeRootFolder: false
       archiveType: 'zip'
       archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
