@@ -47,15 +47,17 @@ jobs:
       archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
       replaceExistingArchive: true
 
-  - task: DotNetCoreCLI@2
-    displayName: Publish
-    inputs:
-      command: publish
-      publishWebProjects: True
-      projects: $(BuildParameters.RestoreBuildProjects)
+#  - task: DotNetCoreCLI@2
+#    displayName: Publish
+#    inputs:
+#     command: publish
+#      publishWebProjects: True
+#      projects: $(BuildParameters.RestoreBuildProjects)
 #      arguments: --configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)
-      arguments: --output $(Build.ArtifactStagingDirectory)
-      zipAfterPublish: True
+#      arguments: --output $(Build.ArtifactStagingDirectory)
+#      ArtifactName: 'drop'
+#      publishLocation: 'Container'
+#      zipAfterPublish: True
 
   - task: PublishBuildArtifacts@1
     displayName: Publish Artifact
