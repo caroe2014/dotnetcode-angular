@@ -54,12 +54,11 @@ jobs:
       publishWebProjects: True
       projects: $(BuildParameters.RestoreBuildProjects)
 #      arguments: --configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)
-      arguments: --output $(build.artifactstagingdirectory)
+      arguments: --output $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       zipAfterPublish: True
 
-  - task: PublishBuildArtifacts@1
-    displayName: Publish Artifact
-    condition: succeededOrFailed()
-    inputs:
-      PathtoPublish: $(build.artifactstagingdirectory)
-      TargetPath: '\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
