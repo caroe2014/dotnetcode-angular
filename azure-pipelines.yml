@@ -34,15 +34,18 @@ jobs:
     inputs:
       command: restore
       projects: $(BuildParameters.RestoreBuildProjects)
+      workingDirectory: '$(System.DefaultWorkingDirectory)'
+
   - task: DotNetCoreCLI@2
     displayName: Build
     inputs:
       projects: $(BuildParameters.RestoreBuildProjects)
+      workingDirectory: '$(System.DefaultWorkingDirectory)'
 
   - task: ArchiveFiles@2
     inputs:
 #      rootFolderOrFile: '$(Build.BinariesDirectory)'
-      rootFolderOrFile: $(BuildParameters.RestoreBuildProjects)
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
       includeRootFolder: false
       archiveType: 'zip'
       archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
@@ -67,3 +70,8 @@ jobs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
       ArtifactName: 'drop'
       publishLocation: 'Container'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    
