@@ -34,13 +34,13 @@ jobs:
     inputs:
       command: restore
       projects: $(BuildParameters.RestoreBuildProjects)
-      workingDirectory: '$(System.DefaultWorkingDirectory)'
+      arguments: --output $(System.DefaultWorkingDirectory)
 
   - task: DotNetCoreCLI@2
     displayName: Build
     inputs:
       projects: $(BuildParameters.RestoreBuildProjects)
-      workingDirectory: '$(System.DefaultWorkingDirectory)'
+      arguments: --output $(System.DefaultWorkingDirectory)
 
   - task: ArchiveFiles@2
     inputs:
